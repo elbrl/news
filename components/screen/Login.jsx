@@ -1,5 +1,11 @@
 import React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+} from "react-native";
 import { useSignIn } from "@clerk/clerk-expo";
 
 export default function SignInScreen() {
@@ -24,28 +30,64 @@ export default function SignInScreen() {
     }
   };
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <View>
-        <TextInput
-          autoCapitalize="none"
-          value={emailAddress}
-          placeholder="Email..."
-          onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
-        />
-      </View>
+    <View
+      style={{
+        flex: 1,
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <View
+        style={{
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Text style={{ fontSize: 30 }}>Test app</Text>
+        <View>
+          <TextInput
+            style={styles.input}
+            value={emailAddress}
+            placeholder="Email..."
+            onChangeText={(emailAddress) => setEmailAddress(emailAddress)}
+          />
+        </View>
 
-      <View>
-        <TextInput
-          value={password}
-          placeholder="Password..."
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
-        />
-      </View>
+        <View>
+          <TextInput
+            style={styles.input}
+            value={password}
+            placeholder="Password..."
+            secureTextEntry={true}
+            onChangeText={(password) => setPassword(password)}
+          />
+        </View>
 
-      <TouchableOpacity onPress={onSignInPress}>
-        <Text>Sign in</Text>
-      </TouchableOpacity>
+        <TouchableOpacity onPress={onSignInPress}>
+          <Text style={styles.iinput}>Log in</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    width: 300,
+    borderRadius: 8,
+  },
+  iinput: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    width: 300,
+    borderRadius: 8,
+    color: "#fff",
+    backgroundColor: "black",
+  },
+});

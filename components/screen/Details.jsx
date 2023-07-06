@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import { View, Text, useWindowDimensions } from "react-native";
 import { Card, Button } from "react-native-paper";
-// import RenderHtml from "react-native-render-html";
 import * as React from "react";
-import { log } from "react-native-reanimated";
 
 export function DetailsScreen({ navigation, route }) {
   const [article, setArticle] = useState([]);
@@ -12,23 +10,16 @@ export function DetailsScreen({ navigation, route }) {
       .then((res) => res.json())
       .then((data) => setArticle(data));
   };
-  const source = {
-    html: `
-    ${article.body_html}`,
-  };
-  console.log(route.params.articleSlug);
-  console.log("a");
+
+  // console.log(route.params.articleSlug);
+  // console.log(article);
   useEffect(() => {
     fetchData();
   }, []);
-  const { width } = useWindowDimensions();
   return (
     <View>
       <Card>
-        <Card.Title
-          title={article.user.name}
-          subtitle={article.readable_publish_date}
-        />
+        <Card.Title subtitle={article.readable_publish_date} />
         <Card.Content>
           <Text variant="titleLarge">{article.title}</Text>
           <Text variant="bodyMedium"> {article.description} </Text>
@@ -47,9 +38,3 @@ export function DetailsScreen({ navigation, route }) {
     </View>
   );
 }
-// <View>
-//   <View style={{ flexDirection: "row" }}>
-//     <RenderHtml contentWidth={width} source={source} />
-
-//   </View>
-// </View>

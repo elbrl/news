@@ -1,5 +1,11 @@
 import * as React from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import {
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  StyleSheet,
+} from "react-native";
 import { useSignUp } from "@clerk/clerk-expo";
 
 export default function SignUpScreen() {
@@ -49,8 +55,17 @@ export default function SignUpScreen() {
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       {!pendingVerification && (
         <View>
+          <Text
+            style={{
+              fontSize: 30,
+              textAlign: "center",
+            }}
+          >
+            Test app
+          </Text>
           <View>
             <TextInput
+              style={styles.input}
               autoCapitalize="none"
               value={emailAddress}
               placeholder="Email..."
@@ -60,6 +75,7 @@ export default function SignUpScreen() {
 
           <View>
             <TextInput
+              style={styles.input}
               value={password}
               placeholder="Password..."
               placeholderTextColor="#000"
@@ -69,7 +85,7 @@ export default function SignUpScreen() {
           </View>
 
           <TouchableOpacity onPress={onSignUpPress}>
-            <Text>Sign up</Text>
+            <Text style={styles.iinput}>Sign up</Text>
           </TouchableOpacity>
         </View>
       )}
@@ -77,12 +93,13 @@ export default function SignUpScreen() {
         <View>
           <View>
             <TextInput
+              style={styles.butonn}
               value={code}
               placeholder="Code..."
               onChangeText={(code) => setCode(code)}
             />
           </View>
-          <TouchableOpacity onPress={onPressVerify}>
+          <TouchableOpacity style={styles.buton} onPress={onPressVerify}>
             <Text>Verify Email</Text>
           </TouchableOpacity>
         </View>
@@ -90,3 +107,40 @@ export default function SignUpScreen() {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    width: 300,
+    borderRadius: 8,
+  },
+  iinput: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    width: 300,
+    borderRadius: 8,
+    color: "#fff",
+    backgroundColor: "black",
+  },
+  buton: {
+    height: 40,
+    margin: 12,
+    padding: 10,
+    width: 200,
+    borderRadius: 8,
+    backgroundColor: "#ccc",
+  },
+  butonn: {
+    borderWidth: 1,
+    height: 40,
+    margin: 12,
+    padding: 10,
+    width: 200,
+    borderRadius: 8,
+  },
+});

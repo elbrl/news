@@ -1,14 +1,12 @@
-// import { createDrawerNavigator } from "@react-navigation/drawer";
-// import { HomeScreen } from "./screen/Home";
+import { createDrawerNavigator } from "@react-navigation/drawer";
+import { Tabshit } from "./Tab";
 
+const Drawer = createDrawerNavigator();
 
-// const Drawer = createDrawerNavigator();
-
-// export function DrawerNavigator(){
-//     return(
-//         <Drawer.Navigator>
-//             <Drawer.Screen name="Home" component={HomeScreen}/>
-
-//         </Drawer.Navigator>
-//     )
-// }
+export function Drawershit() {
+  return (
+    <Drawer.Navigator screenOptions={{ headerShown: false }}>
+      <Drawer.Screen name="Tab" component={Tabshit} />
+    </Drawer.Navigator>
+  );
+}

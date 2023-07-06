@@ -10,7 +10,7 @@ export function HomeScreen({ navigation }) {
       .then((res) => res.json())
       .then((data) => setData(data));
   };
-  console.log(data);
+  // console.log(data);
   useEffect(() => {
     fetchData();
   }, []);
